@@ -1,0 +1,8 @@
+{
+  "best_runs": {
+    "ppo": 4,
+    "a2c": 2,
+    "reinforce": 1,
+    "dqn": 9
+  }
+}

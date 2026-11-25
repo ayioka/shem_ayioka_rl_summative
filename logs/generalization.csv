@@ -1,0 +1,61 @@
+condition,preset,agent,algo,model,episodes,task_return,plots_harvested,plots_lost,total_yield,stranded,task_return_std
+train seeds,standard,PPO,ppo,run04,50,149.84,19.7,2.48,15.91,0.0,106.19
+train seeds,standard,PPO,ppo,run04_seed1,50,126.19,17.98,4.24,14.11,0.0,105.74
+train seeds,standard,PPO,ppo,run04_seed2,50,148.06,19.4,2.76,15.83,0.0,106.65
+train seeds,standard,A2C,a2c,run02,50,122.66,17.26,4.56,13.84,0.0,95.2
+train seeds,standard,A2C,a2c,run02_seed1,50,139.09,18.54,2.96,14.96,0.0,99.42
+train seeds,standard,A2C,a2c,run02_seed2,50,115.02,16.94,5.72,13.44,0.0,101.96
+train seeds,standard,REINFORCE,reinforce,run01,50,163.51,20.64,1.92,17.12,0.0,105.2
+train seeds,standard,REINFORCE,reinforce,run01_seed1,50,149.69,19.8,2.66,15.95,0.0,108.51
+train seeds,standard,REINFORCE,reinforce,run01_seed2,50,160.2,20.44,2.06,16.83,0.0,103.89
+train seeds,standard,DQN,dqn,run09,50,134.71,18.46,3.28,14.88,0.1,109.28
+train seeds,standard,DQN,dqn,run09_seed1,50,131.65,17.72,3.08,14.47,0.1,110.76
+train seeds,standard,DQN,dqn,run09_seed2,50,79.27,11.86,2.04,9.48,0.4,112.0
+train seeds,standard,Greedy + fert,baseline,greedy+fert,50,162.8,20.48,1.72,16.98,0.0,105.17
+train seeds,standard,Greedy,baseline,greedy,50,106.75,12.12,1.04,10.91,0.0,77.84
+train seeds,standard,Random,baseline,random,50,-32.01,0.0,0.48,0.0,1.0,5.41
+unseen seeds,standard,PPO,ppo,run04,50,164.34,21.56,3.02,17.54,0.0,100.94
+unseen seeds,standard,PPO,ppo,run04_seed1,50,147.81,20.2,3.4,16.03,0.0,87.82
+unseen seeds,standard,PPO,ppo,run04_seed2,50,174.2,22.3,1.86,18.18,0.0,87.68
+unseen seeds,standard,A2C,a2c,run02,50,146.05,19.66,3.58,15.87,0.0,77.1
+unseen seeds,standard,A2C,a2c,run02_seed1,50,162.62,21.16,2.7,17.26,0.0,85.49
+unseen seeds,standard,A2C,a2c,run02_seed2,50,136.62,19.26,4.78,15.3,0.0,87.09
+unseen seeds,standard,REINFORCE,reinforce,run01,50,190.4,23.38,1.4,19.67,0.0,87.13
+unseen seeds,standard,REINFORCE,reinforce,run01_seed1,50,179.59,22.96,1.82,18.72,0.0,89.42
+unseen seeds,standard,REINFORCE,reinforce,run01_seed2,50,185.18,23.1,1.86,19.28,0.0,88.86
+unseen seeds,standard,DQN,dqn,run09,50,139.5,19.12,3.3,15.37,0.1,104.42
+unseen seeds,standard,DQN,dqn,run09_seed1,50,145.76,19.34,2.02,15.66,0.12,103.92
+unseen seeds,standard,DQN,dqn,run09_seed2,50,104.55,14.88,1.74,11.97,0.4,117.97
+unseen seeds,standard,Greedy + fert,baseline,greedy+fert,50,190.55,23.52,1.32,19.66,0.0,90.1
+unseen seeds,standard,Greedy,baseline,greedy,50,114.18,12.86,0.68,11.57,0.0,68.15
+unseen seeds,standard,Random,baseline,random,50,-32.64,0.0,0.76,0.0,1.0,12.26
+drought,drought,PPO,ppo,run04,50,42.73,12.24,15.56,8.82,0.0,85.37
+drought,drought,PPO,ppo,run04_seed1,50,1.43,8.4,19.14,5.8,0.0,79.56
+drought,drought,PPO,ppo,run04_seed2,50,24.54,10.34,17.14,7.49,0.0,93.2
+drought,drought,A2C,a2c,run02,50,6.49,9.1,18.78,6.23,0.0,70.97
+drought,drought,A2C,a2c,run02_seed1,50,33.06,11.2,16.36,8.08,0.0,87.36
+drought,drought,A2C,a2c,run02_seed2,50,1.58,7.96,18.66,5.65,0.0,75.67
+drought,drought,REINFORCE,reinforce,run01,50,65.99,14.36,13.32,10.41,0.0,85.43
+drought,drought,REINFORCE,reinforce,run01_seed1,50,41.66,11.92,15.4,8.63,0.0,83.29
+drought,drought,REINFORCE,reinforce,run01_seed2,50,49.56,12.94,15.12,9.37,0.0,86.07
+drought,drought,DQN,dqn,run09,50,43.85,12.6,16.72,9.37,0.04,82.59
+drought,drought,DQN,dqn,run09_seed1,50,40.34,11.34,14.42,8.42,0.1,74.93
+drought,drought,DQN,dqn,run09_seed2,50,28.36,10.64,15.34,7.48,0.08,74.97
+drought,drought,Greedy + fert,baseline,greedy+fert,50,66.56,13.88,13.28,10.44,0.0,87.37
+drought,drought,Greedy,baseline,greedy,50,40.13,7.76,10.54,6.56,0.0,55.75
+drought,drought,Random,baseline,random,50,-34.42,0.0,1.54,0.0,1.0,16.42
+high pest,high_pest,PPO,ppo,run04,50,72.27,15.44,11.1,10.6,0.0,95.46
+high pest,high_pest,PPO,ppo,run04_seed1,50,88.09,16.86,8.82,11.45,0.0,87.87
+high pest,high_pest,PPO,ppo,run04_seed2,50,121.74,18.8,6.14,13.98,0.0,94.6
+high pest,high_pest,A2C,a2c,run02,50,91.92,16.9,9.36,11.99,0.0,86.87
+high pest,high_pest,A2C,a2c,run02_seed1,50,101.26,18.02,8.5,12.63,0.0,87.75
+high pest,high_pest,A2C,a2c,run02_seed2,50,91.1,17.14,9.92,12.07,0.0,85.06
+high pest,high_pest,REINFORCE,reinforce,run01,50,134.55,19.98,5.92,15.2,0.0,96.44
+high pest,high_pest,REINFORCE,reinforce,run01_seed1,50,120.5,18.8,6.88,14.08,0.0,94.68
+high pest,high_pest,REINFORCE,reinforce,run01_seed2,50,129.5,19.38,6.0,14.73,0.0,94.09
+high pest,high_pest,DQN,dqn,run09,50,71.85,13.18,6.94,9.85,0.24,99.13
+high pest,high_pest,DQN,dqn,run09_seed1,50,39.54,10.4,8.36,7.21,0.32,98.9
+high pest,high_pest,DQN,dqn,run09_seed2,50,-7.14,4.82,7.64,3.14,0.72,70.56
+high pest,high_pest,Greedy + fert,baseline,greedy+fert,50,156.76,21.08,4.24,16.91,0.0,95.05
+high pest,high_pest,Greedy,baseline,greedy,50,86.05,10.94,4.2,9.54,0.0,71.09
+high pest,high_pest,Random,baseline,random,50,-32.64,0.06,1.12,0.03,1.0,12.39
