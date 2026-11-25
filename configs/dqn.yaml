@@ -1,0 +1,50 @@
+# DQN sweep. Main method: DQfD-style warm start from greedy demonstrations (permanent demo
+# buffer, large-margin loss, pre-training on demos). Run 0 = from scratch with the spec's
+# original baseline, for comparison. Run 1 = warm-start baseline; runs 2-9 change one
+# setting each (spec "Hyperparameter sweep plan"); run 10 = best combination + Double DQN.
+# Env v2: action masking, no harvest below growth 0.8, potential-based shaping, season end
+# terminal, navigation features.
+defaults:
+  total_frames: 200000
+  lr: 5.0e-4
+  gamma: 0.99
+  buffer_size: 100000
+  batch_size: 128
+  eps_start: 0.1             # warm start: little random exploration needed
+  eps_end: 0.05
+  eps_decay_frames: 100000
+  target_update: soft        # soft | hard
+  tau: 0.005
+  hard_update_every: 2000    # gradient updates (target_update: hard)
+  double_dqn: false
+  hidden: [256, 256]
+  num_envs: 8
+  frames_per_batch: 64       # 8 steps from each of 8 envs
+  train_every: 4             # one gradient step per 4 env frames -> 16 per batch
+  learning_starts: 5000
+  max_grad_norm: 10.0
+  action_mask: true
+  # DQfD warm start (Hester et al. 2018); demo_episodes 0 = learn from scratch.
+  demo_episodes: 200         # greedy seasons in a permanent demo buffer (~89k transitions)
+  demo_margin: 0.8           # large-margin loss margin
+  demo_margin_coef: 5.0      # weight of the margin loss on demo samples (1.0 was too weak)
+  demo_pretrain_updates: 20000  # gradient steps on demos before acting
+  demo_ratio: 0.25           # share of each minibatch drawn from the demo buffer
+  eval_every: 10000
+  eval_episodes: 10
+  final_eval_episodes: 50
+  preset: standard
+
+runs:
+  0: {demo_episodes: 0, demo_pretrain_updates: 0, eps_start: 1.0}  # from scratch
+  1: {}
+  2: {lr: 1.0e-4}
+  3: {lr: 2.0e-3}
+  4: {gamma: 0.95}
+  5: {buffer_size: 10000}
+  6: {batch_size: 32}
+  7: {eps_decay_frames: 30000}
+  8: {eps_end: 0.10, eps_decay_frames: 160000}
+  9: {target_update: hard}
+  10: {target_update: hard, buffer_size: 10000}  # best two single changes (runs 9, 5)
+  11: {double_dqn: true}  # tried on its own; hurt (+58 vs baseline +94), so left out of run 10

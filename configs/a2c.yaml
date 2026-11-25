@@ -1,0 +1,36 @@
+# A2C sweep. Main method: warm start from the greedy clone (models/bc/bc_greedy.pt).
+# Run 0 = from scratch with the spec's original baseline, for comparison.
+# Run 1 = warm-start baseline; runs 2-9 change one setting each (spec table, learning rates
+# and entropy scaled down ~10x for the warm start); run 10 = best combination.
+defaults:
+  total_frames: 200000
+  lr: 7.0e-5
+  gamma: 0.99
+  gae_lambda: 1.0
+  frames_per_batch: 128      # 16 steps from each of 8 envs
+  entropy_coef: 0.001
+  value_coef: 0.5
+  max_grad_norm: 0.5
+  normalize_advantage: false
+  hidden: [256, 256]
+  num_envs: 8
+  action_mask: true
+  init_policy: models/bc/bc_greedy.pt
+  critic_warmup_batches: 150  # critic-only updates first (~20k frames)
+  eval_every: 10000
+  eval_episodes: 10
+  final_eval_episodes: 50
+  preset: standard
+
+runs:
+  0: {init_policy: null, critic_warmup_batches: 0, lr: 7.0e-4, entropy_coef: 0.01}  # from scratch
+  1: {}
+  2: {lr: 1.0e-5}
+  3: {lr: 3.0e-4}
+  4: {gamma: 0.95}
+  5: {gae_lambda: 0.95}
+  6: {frames_per_batch: 32, critic_warmup_batches: 600}
+  7: {frames_per_batch: 512, critic_warmup_batches: 40}
+  8: {entropy_coef: 0.01}
+  9: {value_coef: 1.0, max_grad_norm: 5.0}
+  10: {lr: 1.0e-5, entropy_coef: 0.0}  # only a lower lr (run 2) helped; more entropy (run 8) hurt

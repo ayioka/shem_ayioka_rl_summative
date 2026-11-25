@@ -1,0 +1,42 @@
+# PPO sweep. Main method: warm start from the greedy clone (models/bc/bc_greedy.pt, built by
+# training/bc.py). Run 0 = from scratch with the spec's original baseline, for comparison.
+# Run 1 = warm-start baseline; runs 2-9 change one setting each (spec "Hyperparameter sweep
+# plan", with learning rates and entropy scaled down ~10x: the spec values wreck a
+# warm-started policy within a few updates); run 10 = best combination (fill in after 1-9).
+# Env v2: action masking, no harvest below growth 0.8, potential-based shaping, season end
+# terminal, navigation features.
+defaults:
+  total_frames: 200000
+  lr: 3.0e-5
+  gamma: 0.995
+  gae_lambda: 0.95
+  clip_epsilon: 0.2
+  entropy_coef: 0.001
+  value_coef: 0.5
+  frames_per_batch: 2048
+  epochs: 10
+  minibatch: 256
+  max_grad_norm: 0.5
+  normalize_advantage: false
+  hidden: [256, 256]
+  num_envs: 8
+  action_mask: true
+  init_policy: models/bc/bc_greedy.pt
+  critic_warmup_batches: 10  # critic-only updates first (~20k frames)
+  eval_every: 10000
+  eval_episodes: 10
+  final_eval_episodes: 50
+  preset: standard
+
+runs:
+  0: {init_policy: null, critic_warmup_batches: 0, lr: 3.0e-4, entropy_coef: 0.01}  # from scratch
+  1: {}
+  2: {lr: 1.0e-5}
+  3: {lr: 1.0e-4}
+  4: {clip_epsilon: 0.1}
+  5: {clip_epsilon: 0.3}
+  6: {gae_lambda: 0.80}
+  7: {entropy_coef: 0.0}
+  8: {entropy_coef: 0.01}
+  9: {frames_per_batch: 512, epochs: 4, minibatch: 128, critic_warmup_batches: 40}
+  10: {clip_epsilon: 0.1, entropy_coef: 0.01, gae_lambda: 0.80}  # best three single changes (runs 4, 8, 6)

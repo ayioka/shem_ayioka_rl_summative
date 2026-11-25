@@ -1,0 +1,35 @@
+# REINFORCE sweep. Main method: warm start from the greedy clone (models/bc/bc_greedy.pt).
+# Run 0 = from scratch with the spec's original baseline, for comparison.
+# Run 1 = warm-start baseline; runs 2-9 change one setting each (spec table, learning rates
+# and entropy scaled down for the warm start: at lr 1e-3 two updates took the clone from
+# +159 to -14); run 10 = best combination.
+defaults:
+  total_frames: 200000
+  lr: 3.0e-5
+  gamma: 0.99
+  episodes_per_update: 4
+  entropy_coef: 0.001
+  baseline: none             # none | value
+  value_coef: 0.5            # baseline: value only
+  return_normalization: true
+  max_grad_norm: 0.5
+  hidden: [256, 256]
+  action_mask: true
+  init_policy: models/bc/bc_greedy.pt
+  eval_every: 10000
+  eval_episodes: 10
+  final_eval_episodes: 50
+  preset: standard
+
+runs:
+  0: {init_policy: null, lr: 1.0e-3, entropy_coef: 0.01}  # from scratch
+  1: {}
+  2: {lr: 1.0e-5}
+  3: {lr: 1.0e-4}
+  4: {gamma: 0.95}
+  5: {gamma: 0.999}
+  6: {episodes_per_update: 1}
+  7: {episodes_per_update: 16}
+  8: {entropy_coef: 0.01}
+  9: {baseline: value}
+  10: {gamma: 0.999, episodes_per_update: 16}  # runs 5 and 7 held the clone's level
