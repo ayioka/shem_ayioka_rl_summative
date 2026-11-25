@@ -1,0 +1,31 @@
+﻿
+== 1. Passive season (WAIT only): moisture drift and unaided growth ==
+variant                    waterlog%  drought%  in-band%  final m  max g
+spec_v1 (original)              35.2       6.9      28.9     0.83   0.30
+standard (rebalanced)            6.7      22.8      48.2     0.29   0.42
+drought preset                   0.0      46.0      35.3     0.07   0.12
+
+== 2. Baselines (100 episodes each; random uses 20) ==
+variant                   agent               return  harvest  harv#  lost mature#  yield strand%  fert  water
+spec_v1 (original)        random          -37.2±13.6      2.8    8.2   2.0     0.0   0.28     100   7.4    8.1
+spec_v1 (original)        greedy          -70.9±26.0      0.0    0.0  23.6     0.0   0.00       0   0.0   16.5
+spec_v1 (original)        greedy+fert     -71.9±26.1      0.3    0.0  23.6     0.0   0.03       0  10.0   15.2
+
+standard (rebalanced)     random           -31.8±7.1      6.5    8.0   1.6     0.5   0.65     100   8.1    8.0
+standard (rebalanced)     greedy          117.7±72.2    122.1   13.5   1.7    13.5  12.21       0   0.0   42.2
+standard (rebalanced)     greedy+fert     195.4±97.5    204.1   24.4   2.3    24.6  20.41       0  20.0   34.9
+
+easy preset               random           -32.6±7.7      4.3    7.3   1.1     0.0   0.43      90   7.8    7.7
+easy preset               greedy           23.3±25.6     24.5    2.5   0.0     2.9   2.45       0   0.0   16.4
+easy preset               greedy+fert      65.2±55.5     68.0    7.1   0.0     7.6   6.80       0  15.0   15.7
+
+drought preset            random          -42.4±22.2      4.8    7.7   5.0     0.1   0.48      95   7.8    7.8
+drought preset            greedy          136.7±49.7    138.5   16.1   1.9    16.2  13.85       0   0.0   81.7
+drought preset            greedy+fert     189.2±68.0    200.5   25.2   3.9    25.4  20.05       0  20.0   65.3
+
+high_pest preset          random          -38.2±18.4      4.9    7.7   3.8     0.1   0.49      95   8.0    7.8
+high_pest preset          greedy           86.4±68.5     93.4   10.8   3.3    10.8   9.34       0   0.0   38.0
+high_pest preset          greedy+fert     155.1±94.2    166.4   20.7   3.8    20.9  16.64       0  20.0   31.7
+
+== 3. Env speed: 11,087 steps/s (random actions, single process)
+   200k frames of env stepping alone: ~18 s
