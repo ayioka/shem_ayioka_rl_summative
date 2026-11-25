@@ -1,0 +1,38 @@
+{
+  "preset": "standard",
+  "episodes": 300,
+  "epochs": 40,
+  "hidden": [
+    256,
+    256
+  ],
+  "no_fertilizer": false,
+  "dagger": 4,
+  "dagger_episodes": 100,
+  "dagger_epochs": 15,
+  "final_epochs": 80,
+  "out": "C:\\Users\\HomePC\\Desktop\\Shem\\models\\bc\\bc_greedy.pt",
+  "device": "auto",
+  "bc": {
+    "epoch": 80,
+    "loss": 0.00288406482306639,
+    "accuracy": 0.9996570556787734
+  },
+  "eval": {
+    "eval_return": -35.217688323775704,
+    "eval_task_return": 158.7403392493323,
+    "eval_harvest_return": 162.82433924933244,
+    "eval_plots_harvested": 19.1,
+    "eval_plots_lost": 0.4,
+    "eval_stranded_rate": 0.0,
+    "eval_water_used": 22.5,
+    "eval_fertilizer_used": 20.0,
+    "eval_pesticide_used": 6.0,
+    "eval_episode_length": 448.4,
+    "eval_total_yield": 16.28243392493324,
+    "eval_invalid_actions": 0.0,
+    "eval_return_std": 101.84639411645072,
+    "eval_task_return_std": 115.71521935376475
+  },
+  "demo_task_return": 168.55378137035504
+}

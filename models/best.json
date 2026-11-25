@@ -1,0 +1,43 @@
+{
+  "algo": "reinforce",
+  "run": 1,
+  "run_id": "run01",
+  "final_task_return": 163.5,
+  "final_std": 105.2,
+  "changes": "baseline",
+  "chosen_by": "highest final task return",
+  "per_algorithm": {
+    "ppo": {
+      "run": 4,
+      "run_id": "run04",
+      "final_task_return": 149.8,
+      "changes": "clip_epsilon=0.1",
+      "seeds": 3,
+      "mean_over_seeds": 141.4
+    },
+    "a2c": {
+      "run": 2,
+      "run_id": "run02",
+      "final_task_return": 122.7,
+      "changes": "lr=1e-05",
+      "seeds": 3,
+      "mean_over_seeds": 125.6
+    },
+    "reinforce": {
+      "run": 1,
+      "run_id": "run01",
+      "final_task_return": 163.5,
+      "changes": "baseline",
+      "seeds": 3,
+      "mean_over_seeds": 157.8
+    },
+    "dqn": {
+      "run": 9,
+      "run_id": "run09",
+      "final_task_return": 134.7,
+      "changes": "target_update=hard",
+      "seeds": 3,
+      "mean_over_seeds": 115.2
+    }
+  }
+}

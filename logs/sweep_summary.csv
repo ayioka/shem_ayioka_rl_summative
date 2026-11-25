@@ -1,0 +1,56 @@
+algo,run,run_id,seed,changes,warm_start,final_task_return,final_std,harvested,lost,stranded,best_task_return,minutes
+ppo,0,run00,0,"init_policy=None, critic_warmup_batches=0, lr=0.0003, entropy_coef=0.01",no,-61.2,20.9,0.6,16.4,0.5,-25.6,11.0
+ppo,1,run01,0,baseline,yes,137.3,98.2,19.0,2.8,0.0,158.7,11.4
+ppo,1,run01_seed1,1,baseline (seed1),yes,109.8,100.1,16.4,5.2,0.0,164.0,10.8
+ppo,1,run01_seed2,2,baseline (seed2),yes,135.7,103.7,18.7,3.4,0.0,158.7,10.8
+ppo,2,run02,0,lr=1e-05,yes,117.9,104.0,16.6,4.8,0.0,158.7,11.1
+ppo,3,run03,0,lr=0.0001,yes,113.5,102.2,16.8,4.9,0.0,158.7,11.2
+ppo,4,run04,0,clip_epsilon=0.1,yes,149.8,106.2,19.7,2.5,0.0,158.7,11.1
+ppo,4,run04_seed1,1,clip_epsilon=0.1 (seed1),yes,126.2,105.7,18.0,4.2,0.0,159.3,9.3
+ppo,4,run04_seed2,2,clip_epsilon=0.1 (seed2),yes,148.1,106.7,19.4,2.8,0.0,158.7,156.1
+ppo,5,run05,0,clip_epsilon=0.3,yes,132.0,100.2,18.9,4.2,0.0,158.7,11.2
+ppo,6,run06,0,gae_lambda=0.8,yes,139.6,104.3,19.0,3.0,0.0,158.7,11.0
+ppo,7,run07,0,entropy_coef=0.0,yes,117.4,100.9,17.3,5.3,0.0,158.7,10.8
+ppo,8,run08,0,entropy_coef=0.01,yes,144.2,102.8,19.6,2.9,0.0,158.7,11.2
+ppo,9,run09,0,"frames_per_batch=512, epochs=4, minibatch=128, critic_warmup_batches=40",yes,106.7,91.1,18.4,4.7,0.0,158.7,10.5
+ppo,10,run10,0,"clip_epsilon=0.1, entropy_coef=0.01, gae_lambda=0.8",yes,146.9,98.6,19.2,2.7,0.0,158.7,14.3
+a2c,0,run00,0,"init_policy=None, critic_warmup_batches=0, lr=0.0007, entropy_coef=0.01",no,-20.5,0.0,0.0,0.0,1.0,-20.5,8.8
+a2c,1,run01,0,baseline,yes,120.3,94.3,19.6,3.5,0.0,166.2,10.2
+a2c,2,run02,0,lr=1e-05,yes,122.7,95.2,17.3,4.6,0.0,161.8,10.1
+a2c,2,run02_seed1,1,lr=1e-05 (seed1),yes,139.1,99.4,18.5,3.0,0.0,161.2,4.8
+a2c,2,run02_seed2,2,lr=1e-05 (seed2),yes,115.0,102.0,16.9,5.7,0.0,162.1,3.5
+a2c,3,run03,0,lr=0.0003,yes,-39.7,45.3,7.5,18.6,0.0,158.7,10.1
+a2c,4,run04,0,gamma=0.95,yes,35.8,75.9,12.0,11.4,0.0,164.8,9.9
+a2c,5,run05,0,gae_lambda=0.95,yes,7.5,60.7,11.0,13.5,0.0,164.5,9.9
+a2c,6,run06,0,"frames_per_batch=32, critic_warmup_batches=600",yes,37.6,64.8,16.2,10.5,0.0,158.7,11.2
+a2c,7,run07,0,"frames_per_batch=512, critic_warmup_batches=40",yes,59.4,74.8,13.2,10.8,0.0,162.3,9.6
+a2c,8,run08,0,entropy_coef=0.01,yes,108.7,91.8,18.3,5.0,0.0,166.1,9.8
+a2c,9,run09,0,"value_coef=1.0, max_grad_norm=5.0",yes,105.9,98.7,17.8,4.7,0.0,162.5,9.6
+a2c,10,run10,0,"lr=1e-05, entropy_coef=0.0",yes,114.6,105.0,16.7,5.3,0.0,161.8,10.9
+reinforce,0,run00,0,"init_policy=None, lr=0.001, entropy_coef=0.01",no,-87.8,19.8,0.0,28.0,0.0,-20.6,5.9
+reinforce,1,run01,0,baseline,yes,163.5,105.2,20.6,1.9,0.0,159.0,6.6
+reinforce,1,run01_seed1,1,baseline (seed1),yes,149.7,108.5,19.8,2.7,0.0,161.6,2.6
+reinforce,1,run01_seed2,2,baseline (seed2),yes,160.2,103.9,20.4,2.1,0.0,166.7,2.5
+reinforce,2,run02,0,lr=1e-05,yes,162.0,104.7,20.5,1.9,0.0,161.2,6.6
+reinforce,3,run03,0,lr=0.0001,yes,42.5,63.4,10.9,8.3,0.0,157.5,6.5
+reinforce,4,run04,0,gamma=0.95,yes,144.5,107.8,19.2,2.3,0.0,160.7,6.6
+reinforce,5,run05,0,gamma=0.999,yes,160.8,103.0,20.3,2.0,0.0,160.4,6.6
+reinforce,6,run06,0,episodes_per_update=1,yes,50.2,72.5,11.7,11.2,0.0,161.7,6.6
+reinforce,7,run07,0,episodes_per_update=16,yes,160.6,105.5,20.5,2.2,0.0,161.2,6.7
+reinforce,8,run08,0,entropy_coef=0.01,yes,150.0,100.6,19.8,2.5,0.0,159.0,6.6
+reinforce,9,run09,0,baseline=value,yes,153.9,109.9,20.0,2.4,0.0,160.9,6.7
+reinforce,10,run10,0,"gamma=0.999, episodes_per_update=16",yes,161.7,103.8,20.6,2.1,0.0,161.4,6.0
+dqn,0,run00,0,"demo_episodes=0, demo_pretrain_updates=0, eps_start=1.0",no,-36.2,42.3,2.8,8.3,0.74,-11.4,23.8
+dqn,1,run01,0,baseline,yes,94.0,120.5,15.9,6.9,0.14,118.8,29.1
+dqn,2,run02,0,lr=0.0001,yes,18.8,72.2,9.3,12.3,0.28,61.8,27.6
+dqn,3,run03,0,lr=0.002,yes,65.5,121.1,14.3,8.6,0.28,89.9,30.9
+dqn,4,run04,0,gamma=0.95,yes,12.7,77.3,10.6,14.7,0.14,96.6,29.3
+dqn,5,run05,0,buffer_size=10000,yes,105.3,111.9,16.7,6.1,0.08,100.4,29.0
+dqn,6,run06,0,batch_size=32,yes,36.4,78.4,10.4,8.0,0.38,66.1,23.9
+dqn,7,run07,0,eps_decay_frames=30000,yes,27.4,78.3,10.3,9.1,0.22,122.7,29.1
+dqn,8,run08,0,"eps_end=0.1, eps_decay_frames=160000",yes,45.3,104.1,11.8,9.1,0.26,112.0,29.0
+dqn,9,run09,0,target_update=hard,yes,134.7,109.3,18.5,3.3,0.1,146.7,28.9
+dqn,9,run09_seed1,1,target_update=hard (seed1),yes,131.7,110.8,17.7,3.1,0.1,142.1,164.5
+dqn,9,run09_seed2,2,target_update=hard (seed2),yes,79.3,112.0,11.9,2.0,0.4,137.3,164.4
+dqn,10,run10,0,"target_update=hard, buffer_size=10000",yes,133.3,111.3,17.6,2.6,0.16,149.8,164.4
+dqn,11,run11,0,double_dqn=True,yes,57.9,99.4,12.4,9.5,0.1,91.5,25.1

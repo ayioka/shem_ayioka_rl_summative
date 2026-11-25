@@ -1,0 +1,42 @@
+{
+  "total_frames": 200000,
+  "lr": 0.0001,
+  "gamma": 0.99,
+  "episodes_per_update": 4,
+  "entropy_coef": 0.001,
+  "baseline": "none",
+  "value_coef": 0.5,
+  "return_normalization": true,
+  "max_grad_norm": 0.5,
+  "hidden": [
+    256,
+    256
+  ],
+  "action_mask": true,
+  "init_policy": "models/bc/bc_greedy.pt",
+  "eval_every": 10000,
+  "eval_episodes": 10,
+  "final_eval_episodes": 50,
+  "preset": "standard",
+  "algo": "reinforce",
+  "run_id": "run03",
+  "seed": 0,
+  "final_eval": {
+    "eval_return": -289.9431183792436,
+    "eval_task_return": 42.451566433443595,
+    "eval_harvest_return": 68.72736643344395,
+    "eval_plots_harvested": 10.94,
+    "eval_plots_lost": 8.26,
+    "eval_stranded_rate": 0.0,
+    "eval_water_used": 31.36,
+    "eval_fertilizer_used": 14.68,
+    "eval_pesticide_used": 6.8,
+    "eval_episode_length": 449.46,
+    "eval_total_yield": 6.872736643344395,
+    "eval_invalid_actions": 0.0,
+    "eval_return_std": 70.83024779955926,
+    "eval_task_return_std": 63.384233476011026
+  },
+  "best_eval": 157.46096339696305,
+  "train_time_s": 392.0
+}
