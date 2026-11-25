@@ -1,0 +1,25 @@
+[project]
+name = "shambaguard"
+version = "0.1.0"
+description = "ShambaGuard: a farm-drone reinforcement learning environment (Gymnasium + TorchRL)"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "gymnasium",
+    "torch",
+    "torchrl",
+    "tensordict",
+    "pygame-ce",   # drop-in for pygame ("import pygame"); has Python 3.14 wheels
+    "pillow",
+    "PyOpenGL",
+    "matplotlib",
+    "pandas",
+    "pyyaml",
+]
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

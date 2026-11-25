@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+dist/
+run res/
+experiments_archive_*/
+logs/console/
+logs/*_run.out
+logs/queue_status*.txt

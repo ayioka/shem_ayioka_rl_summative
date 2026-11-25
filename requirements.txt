@@ -1,0 +1,13 @@
+# Same versions the results were produced with (Python 3.14). For CPU-only torch:
+#   pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0
+torchrl==0.15.0
+tensordict==0.15.6
+gymnasium==1.4.0
+numpy
+pygame-ce
+pillow
+matplotlib
+pandas
+pyyaml
+pytest
