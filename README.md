@@ -8,7 +8,7 @@ On a small Kenyan *shamba* (farm), most crop is lost in the gaps between visits:
 
 *The best trained agent (REINFORCE, run 1) on season seed 1002: 20 plots harvested, none lost.*
 
-**Video:** _add the link to the demo video here_
+**Video:** https://drive.google.com/file/d/1qi_tMVuwtKoHoST3Xkh-rOGJkcN09u26/view?usp=sharing
 
 ---
 
