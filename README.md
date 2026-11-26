@@ -63,28 +63,30 @@ Final evaluation: 50 seasons on fixed seeds 1000–1049, greedy actions, *task r
 
 Invalid actions (for example `HARVEST` on an unripe plot) are masked out for the agents. Difficulty presets: `standard` (training and the report), `easy` (debugging), `drought` and `high_pest` (generalization tests only), `spec_v1` (the original spec numbers, kept for reference).
 
-## Install
+## Install and run (uv)
 
-Python 3.10+ (results were produced on 3.14).
+Dependencies are managed with [uv](https://docs.astral.sh/uv/) (`pyproject.toml` + `uv.lock`; Python 3.11–3.14, results were produced on 3.14). uv creates the virtual environment and installs everything, including the CPU build of PyTorch:
 
 ```bash
-pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu   # CPU build; skip for a GPU build
-pip install -r requirements.txt
-python -m pytest -q tests            # 22 tests
+git clone https://github.com/ayioka/shem_ayioka_rl_summative.git
+cd shem_ayioka_rl_summative
+uv sync                  # creates .venv and installs the locked dependencies
+uv run main.py           # best trained agent: Pygame window + verbose terminal output
+uv run pytest -q         # 22 environment tests
 ```
 
-or with uv: `uv sync && uv run main.py`.
+Without uv: `pip install -r requirements.txt` (see the comment in that file for the CPU PyTorch index), then `python main.py`.
 
 ## Watch an agent
 
 ```bash
-python main.py                         # best agent (models/best.json): live window + one line per step
-python play.py                         # same thing
-python main.py --algo dqn --run 9      # any trained run
-python main.py --agent greedy+fert     # the heuristic baseline
-python main.py --preset drought --seed 7
-python main.py --no-render --episodes 20 --quiet   # just score 20 seasons
-python main.py --gif assets/season.gif # save a GIF
+uv run main.py                         # best agent (models/best.json): live window + one line per step
+uv run play.py                         # same thing
+uv run main.py --algo dqn --run 9      # any trained run
+uv run main.py --agent greedy+fert     # the heuristic baseline
+uv run main.py --preset drought --seed 7
+uv run main.py --no-render --episodes 20 --quiet   # just score 20 seasons
+uv run main.py --gif assets/season.gif # save a GIF
 ```
 
 In the window, `D` shows the hidden (unscanned) pests and `Esc` quits. Each terminal line looks like
@@ -101,24 +103,24 @@ action = agent.predict(obs, info["action_mask"])
 ## Train
 
 ```bash
-python training/bc.py --dagger 4                            # greedy clone -> models/bc/bc_greedy.pt
-python training/pg_training.py --algo ppo --run 4           # one run from configs/ppo.yaml
-python training/pg_training.py --algo reinforce --run 1 --seed 1 --tag _seed1
-python training/dqn_training.py --run 9
-python scripts/run_sweep.py --algos ppo a2c --workers 4     # whole sweeps, resumable
+uv run training/bc.py --dagger 4                            # greedy clone -> models/bc/bc_greedy.pt
+uv run training/pg_training.py --algo ppo --run 4           # one run from configs/ppo.yaml
+uv run training/pg_training.py --algo reinforce --run 1 --seed 1 --tag _seed1
+uv run training/dqn_training.py --run 9
+uv run scripts/run_sweep.py --algos ppo a2c --workers 4     # whole sweeps, resumable
 ```
 
 Each algorithm has 11–12 runs in `configs/<algo>.yaml`: run 0 trains from scratch with the spec's baseline settings, run 1 is the warm-started baseline, runs 2–9 change one hyperparameter each, run 10 combines the best changes (DQN run 11 = Double DQN). Every run trains for 200k environment frames. Models go to `models/pg/<algo>_<run>.pt` and `models/dqn/dqn_<run>.pt`, each with a `.config.json` holding its settings and final scores; logs go to `logs/<algo>/`.
 
-`notebooks/colab_sweeps.ipynb` runs the sweeps on Google Colab (`python scripts/pack_colab.py` builds the upload).
+`notebooks/colab_sweeps.ipynb` runs the sweeps on Google Colab (`uv run scripts/pack_colab.py` builds the upload).
 
 ## Reproduce the results and figures
 
 ```bash
-python scripts/summarize_sweeps.py --baselines   # sweep tables -> logs/sweep_summary.csv
-python scripts/pick_best.py                      # -> models/best.json
-python scripts/generalize.py                     # unseen seeds, drought, high pest -> logs/generalization.csv
-python scripts/make_figures.py                   # figures/fig1 ... fig7
+uv run scripts/summarize_sweeps.py --baselines   # sweep tables -> logs/sweep_summary.csv
+uv run scripts/pick_best.py                      # -> models/best.json
+uv run scripts/generalize.py                     # unseen seeds, drought, high pest -> logs/generalization.csv
+uv run scripts/make_figures.py                   # figures/fig1 ... fig7
 ```
 
 | Figure | Shows |
@@ -152,7 +154,7 @@ Combining the best single changes (run 10) never beat the best single change. Fu
 
 ## Generalization
 
-Each agent's best run (3 training seeds averaged) and the baselines, 50 seasons per condition, task return. None of these conditions was seen in training ([Fig 6](figures/fig6_generalization.png), `python scripts/generalize.py`).
+Each agent's best run (3 training seeds averaged) and the baselines, 50 seasons per condition, task return. None of these conditions was seen in training ([Fig 6](figures/fig6_generalization.png), `uv run scripts/generalize.py`).
 
 | Agent | Final-eval seeds (1000–1049) | Unseen seeds (5000–5049) | Drought | High pest | Plots lost: drought / high pest |
 |---|---|---|---|---|---|
@@ -174,6 +176,7 @@ The `drought` preset was made harder after a first test: rarer rain on its own m
 ## Project layout
 
 ```
+pyproject.toml, uv.lock     uv project and locked dependencies
 environment/custom_env.py   EnvConfig, presets, ShambaGuardEnv (Gymnasium)
 environment/rendering.py    Pygame renderer (live window or RGB frames)
 environment/baselines.py    random and greedy heuristic agents

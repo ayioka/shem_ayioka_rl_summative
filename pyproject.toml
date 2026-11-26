@@ -1,17 +1,18 @@
 [project]
 name = "shambaguard"
-version = "0.1.0"
-description = "ShambaGuard: a farm-drone reinforcement learning environment (Gymnasium + TorchRL)"
-requires-python = ">=3.10"
+version = "1.0.0"
+description = "ShambaGuard: a farm-drone reinforcement learning environment (Gymnasium + TorchRL), with DQN, REINFORCE, A2C and PPO"
+readme = "README.md"
+authors = [{ name = "Shem Kirochi Ayioka" }]
+requires-python = ">=3.11,<3.15"
 dependencies = [
     "numpy",
-    "gymnasium",
-    "torch",
-    "torchrl",
-    "tensordict",
+    "gymnasium==1.4.0",
+    "torch==2.15.0",
+    "torchrl==0.15.0",
+    "tensordict==0.15.6",
     "pygame-ce",   # drop-in for pygame ("import pygame"); has Python 3.14 wheels
     "pillow",
-    "PyOpenGL",
     "matplotlib",
     "pandas",
     "pyyaml",
@@ -19,6 +20,18 @@ dependencies = [
 
 [dependency-groups]
 dev = ["pytest"]
+
+# CPU build of PyTorch (smaller download; nothing here needs a GPU).
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv]
+package = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
